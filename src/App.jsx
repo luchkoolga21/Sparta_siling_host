@@ -406,7 +406,7 @@ function App() {
     <div ref={containerRef} className="bg-background min-h-screen overflow-x-hidden selection:bg-accent selection:text-white">
       <ClassicAppBar />
       <Hero />
-      <Features />
+      {/* <Features /> */}
       <CaptainSection />
       <YachtSection />
       <ProtocolCards />
