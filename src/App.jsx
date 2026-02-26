@@ -134,6 +134,8 @@ const ClassicAppBar = () => {
           <button onClick={() => scrollTo('protocol')}>Путь</button>
           <button onClick={() => scrollTo('gallery')}>Галерея</button>
           <button onClick={() => scrollTo('services')}>Услуги</button>
+          <div className="w-full h-px bg-white/10 my-4"></div>
+          <button onClick={() => window.open('https://t.me/sparta_nakhodka', '_blank')} className="text-accent">Написать капитану</button>
           <button className="absolute top-10 right-10 text-white" onClick={() => setIsOpen(false)}><X size={32} /></button>
         </div>
       )}
@@ -153,7 +155,7 @@ const Hero = () => (
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-transparent to-dark"></div>
     </div>
-    <div className="relative z-10 max-w-5xl">
+    <div className="relative z-10 max-w-5xl pt-32">
       <div className="font-heading font-bold text-accent tracking-[0.4em] uppercase mb-8 text-xs md:text-base">Ваш билет к самым красивым местам Приморья</div>
       <h1 className="font-drama italic text-[clamp(2.5rem,15vw,9.5rem)] text-white leading-[0.85] mb-12 break-words uppercase text-contour">Окно в океан.</h1>
       <p className="font-data text-primary/70 max-w-2xl mx-auto uppercase text-xs md:text-sm tracking-widest leading-loose mb-16 px-4">Не просто аренда яхты — побег из города в тишину моря. Трёхозёрье, Лисий остров и Аскольд — увиденные с воды.</p>
@@ -272,10 +274,7 @@ const ProtocolCards = () => {
 
 const Gallery = () => {
   const [lb, setLb] = useState(null);
-  const [active, setActive] = useState(0);
   const photos = [galleryImg1, galleryImg2, galleryImg3, galleryImg4, galleryImg5, galleryImg6];
-  
-  useEffect(() => { const itv = setInterval(() => setActive(a => (a + 1) % photos.length), 2000); return () => clearInterval(itv); }, [photos.length]);
 
   return (
     <section id="gallery" className="relative py-24 md:py-40 px-6 md:px-16 bg-dark flex flex-col justify-center border-t border-white/5">
@@ -283,7 +282,7 @@ const Gallery = () => {
         <h2 className="font-drama italic text-[clamp(3rem,12vw,9rem)] mb-16 md:mb-24 text-center leading-none uppercase text-white">галерея.</h2>
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {photos.map((p, i) => (
-            <div key={i} onClick={() => setLb(p)} className={`relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-white/5 transition-all duration-700 cursor-pointer ${active === i ? 'grayscale-0 scale-[1.03] shadow-2xl border-accent opacity-100' : 'grayscale opacity-30 scale-100'}`}>
+            <div key={i} onClick={() => setLb(p)} className="relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-white/10 transition-all duration-300 cursor-pointer hover:scale-105 hover:border-accent">
               <img src={p} className="w-full h-auto object-cover" alt="Moment" />
             </div>
           ))}
