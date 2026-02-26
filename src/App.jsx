@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Anchor, Target, Waves, Activity, ChevronLeft, ChevronRight, Menu, X, User, Ship, Camera, Fish, Music, Heart, MessageCircle, Send, Instagram, MapPin } from 'lucide-react';
+import { ArrowRight, Waves, Menu, X, Ship, Fish, Heart, MessageCircle, Send, Instagram, MapPin } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,23 +19,6 @@ const LogoImage = ({ className = "h-10 w-auto" }) => (
     }} 
   />
 );
-
-const useTilt = (ref) => {
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || window.innerWidth < 768) return;
-    const onMouseMove = (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left, y = e.clientY - rect.top;
-      const xc = rect.width / 2, yc = rect.height / 2;
-      gsap.to(el, { rotateY: (x - xc) / 20, rotateX: -(y - yc) / 20, duration: 0.5, ease: 'power2.out' });
-    };
-    const onMouseLeave = () => gsap.to(el, { rotateX: 0, rotateY: 0, duration: 0.5 });
-    el.addEventListener('mousemove', onMouseMove);
-    el.addEventListener('mouseleave', onMouseLeave);
-    return () => { el.removeEventListener('mousemove', onMouseMove); el.removeEventListener('mouseleave', onMouseLeave); };
-  }, [ref]);
-};
 
 const MagneticButton = ({ children, className = '', onClick }) => {
   const buttonRef = useRef(null);
@@ -111,7 +94,7 @@ const ClassicAppBar = () => {
               {contacts.map((c, i) => (
                 <a key={i} href={c.link} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-between p-4 rounded-xl transition-all duration-300 group ${c.color} hover:text-white`}>
                   <div className="flex flex-col text-left">
-                    <span className="font-heading font-bold text-[9px] uppercase tracking-widest opacity-50">{c.name}</span>
+                    <span className="font-heading font-bold text-[11px] md:text-[9px] uppercase tracking-widest opacity-50">{c.name}</span>
                     <span className="font-data text-xs tracking-tight">{c.handle}</span>
                   </div>
                   {c.icon}
@@ -151,9 +134,9 @@ const Hero = () => (
       <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-transparent to-dark"></div>
     </div>
     <div className="relative z-10 max-w-5xl">
-      <div className="font-heading font-bold text-accent tracking-[0.4em] uppercase mb-8 text-[10px] md:text-base">Ваш билет к самым красивым местам Приморья</div>
+      <div className="font-heading font-bold text-accent tracking-[0.4em] uppercase mb-8 text-xs md:text-base">Ваш билет к самым красивым местам Приморья</div>
       <h1 className="font-drama italic text-[clamp(2.5rem,15vw,9.5rem)] text-white leading-[0.85] mb-12 break-words uppercase text-contour">Окно в океан.</h1>
-      <p className="font-data text-primary/70 max-w-2xl mx-auto uppercase text-[10px] md:text-sm tracking-widest leading-loose mb-16 px-4">Не просто аренда яхты — побег из города в тишину моря. Трёхозёрье, Лисий остров и Аскольд — увиденные с воды.</p>
+      <p className="font-data text-primary/70 max-w-2xl mx-auto uppercase text-xs md:text-sm tracking-widest leading-loose mb-16 px-4">Не просто аренда яхты — побег из города в тишину моря. Трёхозёрье, Лисий остров и Аскольд — увиденные с воды.</p>
       <MagneticButton className="bg-accent text-white px-10 md:px-14 py-5 md:py-6 text-xs md:text-sm font-heading font-bold uppercase tracking-widest shadow-2xl" onClick={() => window.open('https://t.me/sparta_nakhodka', '_blank')}>написать капитану</MagneticButton>
     </div>
   </section>
@@ -183,20 +166,20 @@ const Features = () => {
             {cards.map((c, i) => (
               <div key={c.id} className="absolute inset-0 rounded-2xl overflow-hidden transition-all duration-500 shadow-lg" style={{ transform: `translateY(${i * 8}px) scale(${1 - i * 0.05})`, opacity: 1 - i * 0.3, zIndex: 10 - i }}>
                 <img src={c.img} className="w-full h-full object-cover" alt={c.title} />
-                <div className="absolute inset-0 bg-dark/40 flex items-end p-4 font-heading font-bold text-[9px] text-white uppercase tracking-tighter">{c.title}</div>
+                <div className="absolute inset-0 bg-dark/40 flex items-end p-4 font-heading font-bold text-[11px] md:text-[9px] text-white uppercase tracking-tighter">{c.title}</div>
               </div>
             ))}
           </div>
         </div>
         <div onClick={() => document.getElementById('captain').scrollIntoView({behavior:'smooth'})} className="bg-dark p-8 md:p-10 rounded-[2.5rem] h-72 md:h-80 relative overflow-hidden group cursor-pointer shadow-xl">
           <h3 className="font-heading font-bold text-xs uppercase mb-6 md:mb-8 tracking-widest text-white uppercase uppercase">шкипер</h3>
-          <div className="font-data text-[10px] leading-relaxed uppercase text-primary/70 whitespace-pre-wrap font-medium">{disp}</div>
-          <div className="mt-auto text-accent font-heading font-bold text-[9px] uppercase flex items-center gap-2 tracking-widest font-bold">досье <ArrowRight size={14} /></div>
+          <div className="font-data text-xs md:text-[10px] leading-relaxed uppercase text-primary/70 whitespace-pre-wrap font-medium">{disp}</div>
+          <div className="mt-auto text-accent font-heading font-bold text-[11px] md:text-[9px] uppercase flex items-center gap-2 tracking-widest font-bold">досье <ArrowRight size={14} /></div>
         </div>
         <div onClick={() => document.getElementById('yacht').scrollIntoView({behavior:'smooth'})} className="bg-primary p-8 md:p-10 rounded-[2.5rem] h-72 md:h-80 relative overflow-hidden group cursor-pointer shadow-xl transition-all font-medium">
           <h3 className="font-heading font-bold text-xs uppercase mb-6 md:mb-8 tracking-widest text-dark flex justify-between uppercase">яхта <Ship size={20} /></h3>
-          <div className="font-data text-[10px] text-dark/60 uppercase tracking-widest leading-loose">Bavaria 38 / 12.13м / 8.5т<br/>Экипаж: 10 человек<br/>3 Каюты / WC / Камбуз</div>
-          <div className="mt-auto border border-dark text-dark p-3 rounded-xl flex justify-between items-center font-heading font-bold text-[9px] uppercase tracking-widest font-bold">спецификация <ArrowRight size={14} /></div>
+          <div className="font-data text-xs md:text-[10px] text-dark/60 uppercase tracking-widest leading-loose">Bavaria 38 / 12.13м / 8.5т<br/>Экипаж: 10 человек<br/>3 Каюты / WC / Камбуз</div>
+          <div className="mt-auto border border-dark text-dark p-3 rounded-xl flex justify-between items-center font-heading font-bold text-[11px] md:text-[9px] uppercase tracking-widest font-bold">спецификация <ArrowRight size={14} /></div>
         </div>
       </div>
     </section>
@@ -212,7 +195,7 @@ const CaptainSection = () => (
       <div className="font-heading font-bold text-accent uppercase tracking-[0.4em] mb-8 text-xs">командор</div>
       <h2 className="font-drama italic text-[clamp(2rem,10vw,7.5rem)] leading-[0.9] mb-10 break-words uppercase">Семен Хворостухин</h2>
       <p className="font-data text-sm md:text-base text-white/80 uppercase tracking-widest leading-loose mb-12 max-w-lg">Опытный яхтсмен. 15 лет стажа. Победитель крупнейших регат Приморья. С ним вы увидите то, что скрыто от глаз обычных туристов.</p>
-      <blockquote className="border-l-4 border-accent pl-8 md:pl-10 italic font-drama text-xl md:text-3xl text-white leading-tight">"Море не прощает ошибок, но дарит свободу."</blockquote>
+      <blockquote className="border-l-4 border-accent pl-8 md:pl-10 italic font-drama text-xl md:text-3xl text-white leading-tight">&quot;Море не прощает ошибок, но дарит свободу.&quot;</blockquote>
     </div>
   </section>
 );
@@ -226,14 +209,14 @@ const YachtSection = () => (
       <div className="font-heading font-bold text-accent uppercase tracking-[0.4em] mb-10 text-xs text-left font-medium uppercase tracking-[0.2em]">яхта</div>
       <h2 className="font-drama italic text-[clamp(2.5rem,12vw,9rem)] leading-[0.9] mb-14 tracking-tighter uppercase break-words text-left">Sparta</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 text-left">
-        <div><div className="font-data text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Модель</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">Bavaria 38</div></div>
-        <div><div className="font-data text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Длина</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">12.13 М</div></div>
-        <div><div className="font-data text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Мачта</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">18 М</div></div>
-        <div><div className="font-data text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Паруса</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">4 / 95 М²</div></div>
-        <div><div className="font-data text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Гости</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">10 Чел</div></div>
-        <div><div className="font-data text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Вес</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">8.5 Т</div></div>
+        <div><div className="font-data text-xs md:text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Модель</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">Bavaria 38</div></div>
+        <div><div className="font-data text-xs md:text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Длина</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">12.13 М</div></div>
+        <div><div className="font-data text-xs md:text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Мачта</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">18 М</div></div>
+        <div><div className="font-data text-xs md:text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Паруса</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">4 / 95 М²</div></div>
+        <div><div className="font-data text-xs md:text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Гости</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">10 Чел</div></div>
+        <div><div className="font-data text-xs md:text-[10px] text-dark/30 uppercase mb-2 tracking-widest">Вес</div><div className="font-heading font-bold text-lg md:text-2xl uppercase tracking-tighter text-dark font-medium">8.5 Т</div></div>
       </div>
-      <p className="mt-12 font-data text-[10px] md:text-xs text-dark uppercase tracking-widest leading-loose text-left max-w-xl font-medium">
+      <p className="mt-12 font-data text-xs md:text-xs text-dark uppercase tracking-widest leading-loose text-left max-w-xl font-medium">
         На борту: 3 уютные каюты, гальюн (WC), душ на корме, полноценный камбуз с плитой и СВЧ, холодильник и аудиосистема Sony Marine. Полный комплект спасательных средств SOLAS.
       </p>
     </div>
@@ -275,7 +258,7 @@ const Gallery = () => {
   useEffect(() => { const itv = setInterval(() => setActive(a => (a + 1) % photos.length), 2000); return () => clearInterval(itv); }, [photos.length]);
 
   return (
-    <section id="gallery" className="relative py-24 md:py-40 px-6 md:px-16 bg-dark min-h-[100dvh] flex flex-col justify-center section-stack border-t border-white/5">
+    <section id="gallery" className="relative py-24 md:py-40 px-6 md:px-16 bg-dark flex flex-col justify-center border-t border-white/5">
       <div className="max-w-7xl mx-auto w-full">
         <h2 className="font-drama italic text-[clamp(3rem,12vw,9rem)] mb-16 md:mb-24 text-center leading-none uppercase text-white">галерея.</h2>
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
@@ -310,10 +293,10 @@ const Services = () => (
             <h3 className="font-heading font-bold text-lg md:text-xl uppercase mb-4 md:mb-6 tracking-tighter lowercase text-left font-medium">{s.title}</h3>
             <ul className="space-y-2 mb-8 flex-grow text-left text-current font-bold">
               {s.items.map((item, idx) => (
-                <li key={idx} className="font-data text-[10px] md:text-xs uppercase tracking-widest flex items-center gap-2 font-bold"><span className="w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>{item}</li>
+                <li key={idx} className="font-data text-xs md:text-xs uppercase tracking-widest flex items-center gap-2 font-bold"><span className="w-1.5 h-1.5 bg-accent rounded-full shrink-0"></span>{item}</li>
               ))}
             </ul>
-            <MagneticButton className={`w-full py-3 md:py-4 px-4 text-[10px] font-bold uppercase tracking-widest shadow-lg ${s.f ? 'bg-accent text-white' : 'bg-dark text-white'}`} onClick={() => window.open('https://t.me/sparta_nakhodka', '_blank')}>забронировать</MagneticButton>
+            <MagneticButton className={`w-full py-3 md:py-4 px-4 text-xs md:text-[10px] font-bold uppercase tracking-widest shadow-lg ${s.f ? 'bg-accent text-white' : 'bg-dark text-white'}`} onClick={() => window.open('https://t.me/sparta_nakhodka', '_blank')}>забронировать</MagneticButton>
           </div>
         ))}
       </div>
@@ -333,8 +316,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 border-b border-white/10 pb-10">
           <div className="shrink-0">
             <LogoImage className="h-10 w-auto mb-6" />
-            <div className="flex items-center gap-3 text-white font-data text-[10px] md:text-sm uppercase tracking-[0.3em] font-bold">
-              <MapPin size={16} className="text-accent" /> Находка, Причал "Восток"
+            <div className="flex items-center gap-3 text-white font-data text-xs md:text-sm uppercase tracking-[0.3em] font-bold">
+              <MapPin size={16} className="text-accent" /> Находка, Причал &quot;Восток&quot;
             </div>
           </div>
           <div className="flex flex-wrap gap-x-10 md:gap-x-16 gap-y-6">
@@ -342,14 +325,14 @@ const Footer = () => {
               <a key={i} href={s.l} target="_blank" className="flex items-center gap-3 group">
                 <span className="p-2 md:p-3 rounded-full bg-white/10 group-hover:bg-accent transition-colors font-bold">{s.i}</span>
                 <div className="flex flex-col">
-                  <span className="font-heading font-bold text-[9px] uppercase tracking-[0.4em] text-accent mb-0.5 font-bold">{s.n}</span>
+                  <span className="font-heading font-bold text-[11px] md:text-[9px] uppercase tracking-[0.4em] text-accent mb-0.5 font-bold">{s.n}</span>
                   <span className="font-data text-sm lowercase tracking-tight text-white group-hover:text-accent transition-colors font-bold">{s.h}</span>
                 </div>
               </a>
             ))}
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-white font-data text-[10px] md:text-xs uppercase tracking-[0.5em] font-bold">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-white font-data text-xs md:text-xs uppercase tracking-[0.5em] font-bold">
           <div className="opacity-40">© 2026 SPARTA SAILING</div>
           <div className="opacity-40 tracking-widest uppercase">Designed by VOID STUDIO</div>
         </div>
@@ -362,9 +345,16 @@ function App() {
   const containerRef = useRef(null);
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
+    const mm = gsap.matchMedia(containerRef);
+
+    mm.add({
+      isDesktop: "(min-width: 768px)",
+      isMobile: "(max-width: 767px)"
+    }, (context) => {
+      const { isDesktop } = context.conditions;
       const layers = gsap.utils.toArray('.section-stack');
-      layers.forEach((layer, i) => {
+      
+      layers.forEach((layer) => {
         ScrollTrigger.create({
           trigger: layer,
           start: "top top",
@@ -376,14 +366,20 @@ function App() {
             const progress = self.progress;
             const img = layer.querySelector('.img-container img, .img-container video');
             if (img && progress > 0) {
-              gsap.to(img, { filter: `grayscale(${progress * 100}%)`, opacity: 1 - progress * 0.6, duration: 0.1 });
+              // Только на десктопе применяем дорогой grayscale фильтр
+              if (isDesktop) {
+                gsap.to(img, { filter: `grayscale(${progress * 100}%)`, opacity: 1 - progress * 0.6, duration: 0.1 });
+              } else {
+                gsap.to(img, { opacity: 1 - progress * 0.6, duration: 0.1 });
+              }
               gsap.to(layer, { scale: 1 - progress * 0.05, duration: 0.1 });
             }
           }
         });
       });
-    }, containerRef);
-    return () => ctx.revert();
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
