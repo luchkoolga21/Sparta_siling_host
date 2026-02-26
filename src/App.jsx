@@ -135,7 +135,7 @@ const ClassicAppBar = () => {
           <button onClick={() => scrollTo('gallery')}>Галерея</button>
           <button onClick={() => scrollTo('services')}>Услуги</button>
           <div className="w-full h-px bg-white/10 my-4"></div>
-          <button onClick={() => window.open('https://t.me/sparta_nakhodka', '_blank')} className="text-accent">Написать капитану</button>
+          <button onClick={() => window.open('https://t.me/sparta_nakhodka', '_blank')} className="bg-accent text-white px-6 py-3 rounded-full uppercase tracking-widest font-bold text-sm">Написать капитану</button>
           <button className="absolute top-10 right-10 text-white" onClick={() => setIsOpen(false)}><X size={32} /></button>
         </div>
       )}
