@@ -3,6 +3,26 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Waves, Menu, X, Ship, Fish, Heart, MessageCircle, Send, Instagram, MapPin } from 'lucide-react';
 
+// Импортируем все ассеты, чтобы Vite обработал пути
+import logoUrl from './assets/LOGO.png';
+import heroPoster from './assets/Foto/2025-09-27_13-01-14_msg509.jpg';
+import heroVideo from './assets/Video/2025-11-09_14-09-39_msg523.MOV';
+import featureImg1 from './assets/Foto/Gemini_Generated_Image_xvj8j5xvj8j5xvj8.png';
+import featureImg2 from './assets/Foto/2025-09-27_13-01-14_msg509.jpg';
+import featureImg3 from './assets/Foto/Gemini_Generated_Image_5nvjjq5nvjjq5nvj.png';
+import captainImg from './assets/Foto/2025-06-30_04-37-56_msg461.jpg';
+import yachtImg from './assets/Foto/2025-09-27_13-01-14_msg509.jpg';
+import protocolImg1 from './assets/Foto/Gemini_Generated_Image_xvj8j5xvj8j5xvj8.png';
+import protocolImg2 from './assets/Foto/2025-09-27_13-01-14_msg510.jpg';
+import protocolImg3 from './assets/Foto/Gemini_Generated_Image_5nvjjq5nvjjq5nvj.png';
+import galleryImg1 from './assets/Foto/2025-09-27_13-01-14_msg510.jpg';
+import galleryImg2 from './assets/Foto/2025-09-21_14-46-04_msg499.jpg';
+import galleryImg3 from './assets/Foto/Gemini_Generated_Image_xvj8j5xvj8j5xvj8.png';
+import galleryImg4 from './assets/Foto/2025-09-23_11-14-51_msg504.jpg';
+import galleryImg5 from './assets/Foto/2025-09-27_13-01-14_msg511.jpg';
+import galleryImg6 from './assets/Foto/2025-09-21_14-46-04_msg502.jpg';
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 // ========================================== 
@@ -11,7 +31,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const LogoImage = ({ className = "h-10 w-auto" }) => (
   <img 
-    src="/LOGO.png" 
+    src={logoUrl} 
     alt="SPARTA" 
     className={`${className} object-contain`}
     style={{ 
@@ -128,8 +148,8 @@ const ClassicAppBar = () => {
 const Hero = () => (
   <section id="hero" className="relative h-[100dvh] w-full flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-dark section-stack">
     <div className="absolute inset-0 z-0 img-container">
-      <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-50" poster="/Foto/2025-09-27_13-01-14_msg509.jpg">
-        <source src="/Video/2025-11-09_14-09-39_msg523.MOV" type="video/mp4" />
+      <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-50" poster={heroPoster}>
+        <source src={heroVideo} type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-transparent to-dark"></div>
     </div>
@@ -144,9 +164,9 @@ const Hero = () => (
 
 const Features = () => {
   const [cards, setCards] = useState([
-    { id: 1, title: 'Остров Аскольд', img: '/Foto/Gemini_Generated_Image_xvj8j5xvj8j5xvj8.png' },
-    { id: 2, title: 'Остров Лисий', img: '/Foto/2025-09-27_13-01-14_msg509.jpg' },
-    { id: 3, title: 'Бухта Трёхозёрье', img: '/Foto/Gemini_Generated_Image_5nvjjq5nvjjq5nvj.png' },
+    { id: 1, title: 'Остров Аскольд', img: featureImg1 },
+    { id: 2, title: 'Остров Лисий', img: featureImg2 },
+    { id: 3, title: 'Бухта Трёхозёрье', img: featureImg3 },
   ]);
   const cycle = () => setCards(prev => { const n = [...prev]; n.push(n.shift()); return n; });
   const text = "> ШКИПЕР СЕМЕН ХВОРОСТУХИН\n> СТАТУС: НАДЕЖЕН\n> ЛИЦЕНЗИЯ: IYT YACHTMASTER...";
@@ -189,7 +209,7 @@ const Features = () => {
 const CaptainSection = () => (
   <section id="captain" className="relative py-24 md:py-40 px-6 md:px-16 bg-dark text-white min-h-[100dvh] flex flex-col md:flex-row gap-12 md:gap-20 items-center section-stack border-t border-white/5">
     <div className="w-full md:w-1/2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden aspect-[4/5] shadow-2xl relative img-container">
-      <img src="/Foto/2025-06-30_04-37-56_msg461.jpg" className="w-full h-full object-cover transition-all duration-1000 grayscale-0" alt="Шкипер" />
+      <img src={captainImg} className="w-full h-full object-cover transition-all duration-1000 grayscale-0" alt="Шкипер" />
     </div>
     <div className="w-full md:w-1/2 text-left text-white font-medium">
       <div className="font-heading font-bold text-accent uppercase tracking-[0.4em] mb-8 text-xs">командор</div>
@@ -203,7 +223,7 @@ const CaptainSection = () => (
 const YachtSection = () => (
   <section id="yacht" className="relative py-24 md:py-40 px-6 md:px-16 bg-background text-dark min-h-[100dvh] flex flex-col md:flex-row-reverse gap-12 md:gap-20 items-center section-stack border-t border-dark/5">
     <div className="w-full md:w-1/2 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden aspect-video shadow-2xl img-container">
-       <img src="/Foto/2025-09-27_13-01-14_msg509.jpg" className="w-full h-full object-cover grayscale-0 transition-all duration-1000" alt="Яхта SPARTA" />
+       <img src={yachtImg} className="w-full h-full object-cover grayscale-0 transition-all duration-1000" alt="Яхта SPARTA" />
     </div>
     <div className="w-full md:w-1/2">
       <div className="font-heading font-bold text-accent uppercase tracking-[0.4em] mb-10 text-xs text-left font-medium uppercase tracking-[0.2em]">яхта</div>
@@ -225,9 +245,9 @@ const YachtSection = () => (
 
 const ProtocolCards = () => {
   const routes = [
-    { num: '01', title: 'Остров Аскольд', desc: 'Маяк, заброшенные базы и дикие олени. 4 часа хода.', img: '/Foto/Gemini_Generated_Image_xvj8j5xvj8j5xvj8.png' },
-    { num: '02', title: 'Остров Лисий', desc: 'Заповедная жемчужина. Чистейшее море в самом центре залива.', img: '/Foto/2025-09-27_13-01-14_msg510.jpg' },
-    { num: '03', title: 'Трёхозёрье', desc: 'Визитная карточка Приморья. Бирюзовая вода и белоснежный песок.', img: '/Foto/Gemini_Generated_Image_5nvjjq5nvjjq5nvj.png' },
+    { num: '01', title: 'Остров Аскольд', desc: 'Маяк, заброшенные базы и дикие олени. 4 часа хода.', img: protocolImg1 },
+    { num: '02', title: 'Остров Лисий', desc: 'Заповедная жемчужина. Чистейшее море в самом центре залива.', img: protocolImg2 },
+    { num: '03', title: 'Трёхозёрье', desc: 'Визитная карточка Приморья. Бирюзовая вода и белоснежный песок.', img: protocolImg3 },
   ];
 
   return (
@@ -253,7 +273,7 @@ const ProtocolCards = () => {
 const Gallery = () => {
   const [lb, setLb] = useState(null);
   const [active, setActive] = useState(0);
-  const photos = ['/Foto/2025-09-27_13-01-14_msg510.jpg', '/Foto/2025-09-21_14-46-04_msg499.jpg', '/Foto/Gemini_Generated_Image_xvj8j5xvj8j5xvj8.png', '/Foto/2025-09-23_11-14-51_msg504.jpg', '/Foto/2025-09-27_13-01-14_msg511.jpg', '/Foto/2025-09-21_14-46-04_msg502.jpg'];
+  const photos = [galleryImg1, galleryImg2, galleryImg3, galleryImg4, galleryImg5, galleryImg6];
   
   useEffect(() => { const itv = setInterval(() => setActive(a => (a + 1) % photos.length), 2000); return () => clearInterval(itv); }, [photos.length]);
 

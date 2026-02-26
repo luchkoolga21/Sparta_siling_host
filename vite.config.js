@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/Sparta_siling_host/',
   plugins: [react()],
+  assetsInclude: ['**/*.MOV'],
   build: {
     outDir: 'docs',
   },
