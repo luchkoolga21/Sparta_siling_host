@@ -384,12 +384,13 @@ function App() {
           onUpdate: (self) => {
             const progress = self.progress;
             const img = layer.querySelector('.img-container img, .img-container video');
-            if (img && progress > 0) {
+            if (img) {
               // Только на десктопе применяем дорогой grayscale фильтр
               if (isDesktop) {
                 gsap.to(img, { filter: `grayscale(${progress * 100}%)`, opacity: 1 - progress * 0.6, duration: 0.1 });
               } else {
-                gsap.to(img, { opacity: 1 - progress * 0.6, duration: 0.1 });
+                // На мобильных просто меняем прозрачность и УБИРАЕМ ФИЛЬТР
+                gsap.to(img, { filter: 'none', opacity: 1 - progress * 0.6, duration: 0.1 });
               }
               gsap.to(layer, { scale: 1 - progress * 0.05, duration: 0.1 });
             }
