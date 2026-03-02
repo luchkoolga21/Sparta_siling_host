@@ -88,6 +88,7 @@ const ClassicAppBar = () => {
   const contacts = [
     { name: 'WhatsApp', handle: '+7 914 714-74-68', icon: <MessageCircle size={18} />, link: 'https://wa.me/79147147468', color: 'hover:bg-green-500' },
     { name: 'Telegram', handle: '@sparta_nakhodka', icon: <Send size={18} />, link: 'https://t.me/sparta_nakhodka', color: 'hover:bg-blue-500' },
+    { name: 'Instagram', handle: '@sparta_sailing', icon: <Instagram size={18} />, link: 'https://instagram.com/sparta_sailing', color: 'hover:bg-pink-500' },
     { name: 'Телефон', handle: '8-914-714-7468', icon: <MapPin size={18} />, link: 'tel:+79147147468', color: 'hover:bg-accent' },
   ];
 
@@ -361,6 +362,7 @@ const Footer = () => {
   const soc = [
     { n: 'WhatsApp', h: '+7 914 714-74-68', i: <MessageCircle size={18} />, l: 'https://wa.me/79147147468' },
     { n: 'Telegram', h: '@sparta_nakhodka', i: <Send size={18} />, l: 'https://t.me/sparta_nakhodka' },
+    { n: 'Instagram', h: '@sparta_sailing', i: <Instagram size={18} />, l: 'https://instagram.com/sparta_sailing' }
   ];
   return (
     <footer className="bg-dark text-white py-10 px-6 md:px-16 border-t border-white/10 z-[50] relative">
