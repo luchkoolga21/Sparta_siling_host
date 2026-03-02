@@ -216,7 +216,7 @@ const CaptainSection = () => (
     </div>
     <div className="w-full md:w-1/2 text-left text-white font-medium">
       <div className="font-heading font-bold text-accent uppercase tracking-[0.4em] mb-8 text-xs underline decoration-2 underline-offset-8">Очень опытный шкипер</div>
-      <h2 className="font-drama italic text-[clamp(2rem,10vw,7.5rem)] leading-[0.9] mb-10 break-words uppercase text-accent">Семен Ремович</h2>
+      <h2 className="font-drama italic text-[clamp(2rem,10vw,7.5rem)] leading-[0.9] mb-10 break-words uppercase text-accent">Семен Ремович Хворостухин</h2>
       <p className="font-data text-sm md:text-base text-white/80 uppercase tracking-widest leading-loose mb-12 max-w-lg">
         Мастер спорта и яхтенный капитан, прошедший все океаны планеты. Победитель трансокеанской регаты и мировых серий.
         <br /><br />
@@ -434,7 +434,6 @@ function App() {
     <div ref={containerRef} className="bg-background min-h-screen overflow-x-hidden selection:bg-accent selection:text-white">
       <ClassicAppBar />
       <Hero />
-      <Features />
       <CaptainSection />
       <YachtSection />
       <ProtocolCards />
